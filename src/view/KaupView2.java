@@ -19,7 +19,7 @@ public class KaupView2 {
                 .name(sc.next())
                 .build();
 
-        UtilService util=new UtilServiceImpl();
+        UtilService util=UtilServiceImpl.getInstance();
 
         double h=util.createRandomDouble(150,50);
         double w=util.createRandomDouble(30,70);

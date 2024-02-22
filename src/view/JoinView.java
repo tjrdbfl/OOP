@@ -22,6 +22,7 @@ public class JoinView {
                 .job(sc.next())
                 .build();
 
+
         System.out.println(user.toString());
 
     }

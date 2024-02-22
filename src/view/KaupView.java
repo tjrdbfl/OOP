@@ -22,10 +22,7 @@ public class KaupView {
         UserDTO person=new UserBuilder()
                 .height(sc.nextDouble())
                 .weight(sc.nextDouble())
-                .name(sc.next())
                 .build();
-
-
 
         double h=util.createRandomDouble(150,50);
         double w=util.createRandomDouble(30,70);
@@ -36,9 +33,8 @@ public class KaupView {
         String bodyMass=kaupService.createBodyMass(bmi);
 
         System.out.println("================= BMI 계산기 =================");
-//        System.out.println("이름: "+person.getName());
-//        System.out.println("키: " + person.getHeight());
-//        System.out.println("몸무게: " + person.getWeight());
+        System.out.println("키: " + person.getHeight());
+        System.out.println("몸무게: " + person.getWeight());
         System.out.printf("BMI는 %.1f 입니다\n", bmi);
         System.out.println(bodyMass + "입니다.");
         System.out.println("================= BMI 계산기 =================");
