@@ -23,7 +23,7 @@ public class SubjectView {
                 .name(sc.next())
                 .build();
 
-        GradeService gradeService=new GradeServiceImpl();
+        GradeService gradeService=GradeServiceImpl.getInstance();
 
         System.out.println(subjectBuilder.toString());
 

@@ -20,9 +20,6 @@ public class KaupDTO {
     public double getWeight(){
         return this.weight;
     }
-    public void createBMI(){
-        this.bmi=weight/Math.pow(height/100,2);
-    }
     public double getBmi() {
         return this.bmi;
     }

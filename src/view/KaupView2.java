@@ -26,15 +26,15 @@ public class KaupView2 {
 
         KaupService kaupService=new KaupServiceImpl();
 
-        double bmi=kaupService.createBMI(kaupDTO.getHeight(), kaupDTO.getWeight());
-        String bodyMass=kaupService.createBodyMass(bmi);
-
-        System.out.println("================= BMI 계산기 =================");
-//        System.out.println("이름: "+kaupDTO.getName());
-//        System.out.println("키: " + kaupDTO.getHeight());
-//        System.out.println("몸무게: " + kaupDTO.getWeight());
-        System.out.printf("BMI는 %.1f 입니다\n", bmi);
-        System.out.println(bodyMass + "입니다.");
-        System.out.println("================= BMI 계산기 =================");
+//        double bmi=kaupService.createBMI(kaupDTO.getHeight(), kaupDTO.getWeight());
+//        String bodyMass=kaupService.createBodyMass(bmi);
+//
+//        System.out.println("================= BMI 계산기 =================");
+////        System.out.println("이름: "+kaupDTO.getName());
+////        System.out.println("키: " + kaupDTO.getHeight());
+////        System.out.println("몸무게: " + kaupDTO.getWeight());
+//        System.out.printf("BMI는 %.1f 입니다\n", bmi);
+//        System.out.println(bodyMass + "입니다.");
+//        System.out.println("================= BMI 계산기 =================");
     }
 }
