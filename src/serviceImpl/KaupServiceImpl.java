@@ -1,6 +1,7 @@
 package serviceImpl;
 
 import model.KaupDTO;
+import model.UserDTO;
 import service.KaupService;
 import service.UtilService;
 
@@ -15,19 +16,25 @@ public class KaupServiceImpl implements KaupService {
     }
 
     @Override
-    public double createBMI(double height, double weight) {
-        double bmi= weight / Math.pow( height /100,2);
-        return bmi;
+    public String createBMI(UserDTO user) {
+        double height=user.getHeight();
+        double weight=user.getWeight();
+        double bmi=0.0;
+
+        bmi= weight / Math.pow( height /100,2);
+
+        return Double.toString(bmi);
     }
     @Override
-    public String createBodyMass(double bmi) {
+    public String createBodyMass(String bmi) {
+        double bmiN=Double.parseDouble(bmi);
         String bodyMass=null;
 
-        if(bmi<18.5){
+        if(bmiN<18.5){
             bodyMass="저체중";
-        }else if(bmi<23){
+        }else if(bmiN<23){
             bodyMass="정상";
-        }else if(bmi<25.00){
+        }else if(bmiN<25.00){
             bodyMass="과체중";
         }else{
             bodyMass="비만";

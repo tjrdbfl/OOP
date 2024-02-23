@@ -1,8 +1,16 @@
 package serviceImpl;
 
 import service.GradeService;
+import service.KaupService;
 
 public class GradeServiceImpl implements GradeService {
+    private static GradeService instance=new GradeServiceImpl();
+
+    public GradeServiceImpl(){};
+
+    public static GradeService getInstance(){
+        return instance;
+    }
 
     @Override
     public int getTotal(int korean, int math, int english) {
