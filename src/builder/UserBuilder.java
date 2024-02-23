@@ -55,7 +55,7 @@ public class UserBuilder {
         return this;
     }
     public UserBuilder height(double height) {
-        this.job = job;
+        this.height = height;
         return this;
     }
     public UserBuilder weight(double weight) {
