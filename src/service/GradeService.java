@@ -1,8 +1,10 @@
 package service;
 
-public interface GradeService {
-    public int getTotal(int korean, int math, int english);
+import model.SubjectDTO;
 
-    public double getAverage(int korean, int math, int english);
+public interface GradeService {
+    public int getTotal(SubjectDTO subjects);
+
+    public double getAverage(SubjectDTO subjects);
 
 }

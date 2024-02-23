@@ -1,5 +1,6 @@
 package serviceImpl;
 
+import model.SubjectDTO;
 import service.GradeService;
 import service.KaupService;
 
@@ -13,16 +14,26 @@ public class GradeServiceImpl implements GradeService {
     }
 
     @Override
-    public int getTotal(int korean, int math, int english) {
+    public int getTotal(SubjectDTO subjects) {
+        int korean=subjects.getKorean();
+        int math=subjects.getMath();
+        int english=subjects.getEnglish();
         int total=0;
+
         total=korean+math+english;
+
         return total;
     }
 
     @Override
-    public double getAverage(int korean, int math, int english) {
+    public double getAverage(SubjectDTO subjects) {
+        int korean=subjects.getKorean();
+        int math=subjects.getMath();
+        int english=subjects.getEnglish();
         double avaerage=0;
+
         avaerage=(double)(korean+math+ english)/3;
+
         return avaerage;
     }
 }

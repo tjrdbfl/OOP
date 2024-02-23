@@ -1,34 +1,52 @@
 package view;
 
 import builder.SubjectBuilder;
+import builder.UserBuilder;
 import model.SubjectDTO;
+import model.UserDTO;
 import service.GradeService;
+import service.UtilService;
 import serviceImpl.GradeServiceImpl;
+import serviceImpl.UtilServiceImpl;
 
 import java.util.Scanner;
 
 public class SubjectView {
     public static void main(String[] args) {
 
-        Scanner sc=new Scanner(System.in);
+        System.out.printf("다음은 한 학생의 과목 점수이다.\n" +
+                "이름: ");
 
-        System.out.println("다음은 한 학생의 과목 점수이다.");
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println("국어점수, 수학점수, 영어점수, 이름");
+        UtilService util = UtilServiceImpl.getInstance();
+        GradeService grade = GradeServiceImpl.getInstance();
 
-        SubjectDTO subjectBuilder=new SubjectBuilder()
-                .korean(sc.nextInt())
-                .math(sc.nextInt())
-                .english(sc.nextInt())
+        UserDTO student = new UserBuilder()
                 .name(sc.next())
                 .build();
 
-        GradeService gradeService=GradeServiceImpl.getInstance();
+        SubjectDTO subjects = new SubjectBuilder()
+                .korean(util.createRandomInteger(0, 100))
+                .math(util.createRandomInteger(0, 100))
+                .english(util.createRandomInteger(0, 100))
+                .build();
 
-        System.out.println(subjectBuilder.toString());
+        int totalGrade = grade.getTotal(subjects);
+        double average = grade.getAverage(subjects);
 
-        System.out.println("평균 점수: "+gradeService.getTotal( subjectBuilder.getKorean(), subjectBuilder.getMath(),subjectBuilder.getEnglish()));
-        System.out.println("평균 점수: "+gradeService.getAverage( subjectBuilder.getKorean(), subjectBuilder.getMath(),subjectBuilder.getEnglish()));
+        System.out.printf("================= 성적표 =================\n" +
+                        "Korean: %s\n" +
+                        "Math: %s\n" +
+                        "English: %s\n" +
+                        "Total: %s\n" +
+                        "Average: %.2f\n" +
+                        "================= 성적표 ================="
+                , subjects.getKorean()
+                , subjects.getMath()
+                , subjects.getEnglish()
+                , totalGrade
+                , average);
 
     }
 }

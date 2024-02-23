@@ -5,15 +5,6 @@ public class SubjectDTO {
     private int math;
     private int english;
 
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getKorean() {
         return this.korean;
@@ -39,11 +30,10 @@ public class SubjectDTO {
         this.english = english;
     }
 
-    public SubjectDTO(int korean, int math, int english, String name){
+    public SubjectDTO(int korean, int math, int english){
         this.korean=korean;
         this.math=math;
         this.english=english;
-        this.name=name;
     }
 
     public String toString(){
@@ -51,7 +41,6 @@ public class SubjectDTO {
                 "korean='" + korean + '\'' +
                 ", math='" + math + '\'' +
                 ", english='" + english + '\'' +
-                ", name='" + name + '\'' +
                 '}';
     }
 

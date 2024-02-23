@@ -7,8 +7,6 @@ public class SubjectBuilder {
     private int math;
     private int english;
 
-    private String name;
-
     public SubjectBuilder korean(int korean){
         this.korean=korean;
         return this;
@@ -24,13 +22,9 @@ public class SubjectBuilder {
         return this;
     }
 
-    public SubjectBuilder name(String name){
-        this.name=name;
-        return this;
-    }
 
     public SubjectDTO build(){
-        return new SubjectDTO(korean,math,english,name);
+        return new SubjectDTO(korean,math,english);
     }
 
 }
