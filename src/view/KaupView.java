@@ -1,8 +1,6 @@
 package view;
 
-import builder.KaupBuilder;
 import builder.UserBuilder;
-import model.KaupDTO;
 import model.UserDTO;
 import service.KaupService;
 import service.UtilService;
