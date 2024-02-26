@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardView {
-    public static void main(String[] args) {
+    public static void main() {
         List<BoardDTO> articles=new ArrayList<BoardDTO>();
         UtilService util= UtilServiceImpl.getInstance();
 

@@ -11,9 +11,8 @@ import java.util.Scanner;
 
 public class KaupView {
 
-    public static void main(String[] args) {
+    public static void main(Scanner sc) {
 
-        Scanner sc=new Scanner(System.in);
         String bmi,bodyMass;
 
         UtilService util= UtilServiceImpl.getInstance();

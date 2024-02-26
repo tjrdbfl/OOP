@@ -12,7 +12,7 @@ import serviceImpl.UtilServiceImpl;
 import java.util.Scanner;
 
 public class SubjectView {
-    public static void main(String[] args) {
+    public static void main() {
 
         System.out.printf("다음은 한 학생의 과목 점수이다.\n" +
                 "이름: ");
