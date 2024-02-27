@@ -2,6 +2,8 @@ package serviceImpl;
 
 import service.UtilService;
 
+import java.util.List;
+
 public class UtilServiceImpl implements UtilService {
 
     private static UtilService instance=new UtilServiceImpl();
@@ -71,6 +73,13 @@ public class UtilServiceImpl implements UtilService {
         String[] companies={"구글","애플","삼성","LG","엔비디아"
                 ,"메타", "현대","기아","테슬라","아마존"};
         return companies[createRandomInteger(0,10)];
+    }
+
+    @Override
+    public String createRandomUsername() {
+        String username = "";
+        for(; username.length() < 5; username += String.valueOf((char)('a' + this.createRandomInteger(0, 26))));
+        return username;
     }
 
 }
