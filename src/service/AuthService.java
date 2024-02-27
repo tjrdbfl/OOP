@@ -1,7 +1,20 @@
 package service;
 
-public interface AuthService {
-    public String login();
+import model.UserDTO;
 
-    public String join();
+import java.util.Map;
+import java.util.Scanner;
+
+public interface AuthService {
+    String login();
+
+    Map<String, UserDTO> getUserMap();
+
+    String addUsers();
+
+    UserDTO findUser(String name);
+
+    String join(Scanner sc);
+
+    String count();
 }
