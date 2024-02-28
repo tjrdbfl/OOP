@@ -21,8 +21,7 @@ public class JoinView {
                 .job(sc.next())
                 .build();
 
-
-        System.out.println(user.toString());
+        System.out.println("입력: "+user.toString());
 
     }
 

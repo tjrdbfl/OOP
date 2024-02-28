@@ -8,55 +8,35 @@ import serviceImpl.UserServiceImpl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class UserController{ //controller: model과 view를 가지고 있어야 한다.
-    private Map<String, UserDTO> users;
-
-    UserService user;
-
+    UserService userService;
     public UserController(){
-        this.users=new HashMap<>(); //생성자를 통해 호출할 시 객체 생성 및 메모리 할당
-        this.user=UserServiceImpl.getInstance();
+        userService=UserServiceImpl.getInstance();
     }
-    public String addUsers(){
-        AuthServiceImpl.getInstance().addUsers();
-        return null;
+    public String addUsers() {
+        return userService.addUsers();
     }
-
-    public String join(UserDTO user) {
-        return null;
-    }
-
-    public String login(UserDTO user) {
-        return null;
-    }
-
-    public UserDTO findUserById(String username) {
-        return null;
-    }
-
-    public String updatePassword(UserDTO user) {
-        return null;
-    }
-
-    public String deleteUser(String username) {
-        return null;
-    }
-
-    public List<UserDTO> getUserList() {
-        return null;
-    }
-
-    public List<UserDTO> findUsersByName(String name) {
-        return null;
-    }
-
-    public List<UserDTO> findUsersByJob(String job) {
-        return null;
-    }
-
     public String countUsers() {
-        return null;
+        return userService.countUsers();
     }
+    public Map<String,UserDTO> getUsersList() {
+        System.out.println("전체 목록 출력");
+        return userService.getUsersList();
+    }
+    public String searchUsersId(String userServicename) {
+        return userService.searchUsersId(userServicename);
+    }
+    public void printUsersId() {
+        userService.printUsersId();
+    }
+    public String join(UserDTO userDTO){
+        return userService.join(userDTO);
+    }
+    public String login(Scanner sc){
+        return userService.login(sc);
+    }
+    
 
 }
