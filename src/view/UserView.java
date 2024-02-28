@@ -36,39 +36,49 @@ public class UserView {
                     System.out.println("종료");
                     return;
                 case "1":
-                    UserDTO userDTO = new UserBuilder()
-                            .username("sdf")
-                            .password("Sdf")
-                            .phoneNumber("010-0101-0101")
-                            .job("개발자")
-                            .build();
-                    System.out.println(userController.join(userDTO));
+                    System.out.println(userController.join(sc));
                     break;
                 case "2":
                     System.out.println(userController.login(sc));
                     break;
                 case "3":
                     userController.printUsersId();
-                    System.out.print("검색하고 싶은 id: ");
-                    System.out.println(userController.searchUsersId(sc.next()));
+                    System.out.println(userController.findUserById(sc));
                     break;
                 case "4":
-                    System.out.println("4-비번변경");
+                    System.out.println(userController.updatePassword(sc));
                     break;
                 case "5":
-                    System.out.println("5-탈퇴");
+                    System.out.println(userController.deleteUser(sc));
                     break;
                 case "6":
-                    Map<String, UserDTO> users = userController.getUsersList();
+                    Map<String, UserDTO> users = userController.getUserMap();
                     users.forEach((k, v) -> {
                         System.out.printf("아이디: %s, 회원정보: %s", k, v);
                     });
+                    System.out.println(users.size() + "");
                     break;
                 case "7":
-                    System.out.println("7-이름검색");
+                    List<UserDTO> listName = userController.findUsersByName(sc);
+                    if(listName==null){
+                        System.out.println("회원이 존재하지 않습니다.");
+                    }
+                    else{
+                        for (UserDTO i : listName) {
+                            System.out.println(i.toString());
+                        }
+                    }
                     break;
                 case "8":
-                    System.out.println("8-직업검색");
+                    List<UserDTO> listJob = userController.findUsersByJob(sc);
+                    if(listJob==null){
+                        System.out.println("회원이 존재하지 않습니다.");
+                    }
+                    else{
+                        for (UserDTO i : listJob) {
+                            System.out.println(i.toString());
+                        }
+                    }
                     break;
                 case "9":
                     System.out.println(userController.countUsers());
