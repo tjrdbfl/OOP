@@ -3,6 +3,16 @@ package model;
 import java.util.PrimitiveIterator;
 
 public class UserDTO {
+    private int id;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     private String username;
     private String password;
     private String passwordConfirm;

@@ -1,75 +1,62 @@
-package serviceImpl;
+package controller;
 
-import builder.UserBuilder;
-import controller.UserController;
 import model.UserDTO;
-import service.AuthService;
 import service.UserService;
+import serviceImpl.AuthServiceImpl;
+import serviceImpl.UserServiceImpl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UserServiceImpl implements UserService {
+public class UserController{ //controller: model과 view를 가지고 있어야 한다.
+    private Map<String, UserDTO> users;
 
-    private static UserService instance=new UserServiceImpl();
-    Map<String, UserDTO> users;
+    UserService user;
 
-    private UserServiceImpl(){
-        this.users=new HashMap<>();
+    public UserController(){
+        this.users=new HashMap<>(); //생성자를 통해 호출할 시 객체 생성 및 메모리 할당
+        this.user=UserServiceImpl.getInstance();
     }
-    public static UserService getInstance(){
-        return instance;
-    }
-
-    @Override
-    public String addUsers() {
+    public String addUsers(){
+        AuthServiceImpl.getInstance().addUsers();
         return null;
     }
 
-    @Override
     public String join(UserDTO user) {
         return null;
     }
 
-    @Override
     public String login(UserDTO user) {
         return null;
     }
 
-    @Override
     public UserDTO findUserById(String username) {
         return null;
     }
 
-    @Override
     public String updatePassword(UserDTO user) {
         return null;
     }
 
-    @Override
     public String deleteUser(String username) {
         return null;
     }
 
-    @Override
     public List<UserDTO> getUserList() {
         return null;
     }
 
-    @Override
     public List<UserDTO> findUsersByName(String name) {
         return null;
     }
 
-    @Override
     public List<UserDTO> findUsersByJob(String job) {
         return null;
     }
 
-    @Override
     public String countUsers() {
         return null;
     }
+
 }
