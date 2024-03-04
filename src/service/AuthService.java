@@ -1,6 +1,6 @@
 package service;
 
-import model.UserDTO;
+import model.User;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -8,11 +8,11 @@ import java.util.Scanner;
 public interface AuthService {
     String login();
 
-    Map<String, UserDTO> getUserMap();
+    Map<String, User> getUserMap();
 
     String addUsers();
 
-    UserDTO findUser(String name);
+    User findUser(String name);
 
     String join(Scanner sc);
 

@@ -1,7 +1,6 @@
 package serviceImpl;
 
-import builder.UserBuilder;
-import model.UserDTO;
+import model.User;
 import repository.UserRepository;
 import service.UserService;
 import service.UtilService;
@@ -10,12 +9,14 @@ import java.util.*;
 
 public class UserServiceImpl implements UserService {
     private static UserService instance = new UserServiceImpl();
-    Map<String, UserDTO> users;
+    Map<String, User> users;
+    List<User> userList;
     UserRepository userRepository;
 
     private UserServiceImpl() {
         this.users = new HashMap<>(); //this 생략 가능
         this.userRepository = new UserRepository();
+        this.userList=new ArrayList<>();
     }
 
     public static UserService getInstance() {
@@ -24,12 +25,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String addUsers() {
-        Map<String, UserDTO> map = new HashMap<>();
+        Map<String, User> map = new HashMap<>();
         UtilService util = UtilServiceImpl.getInstance();
 
         for (int i = 0; i < 5; i++) {
             String username = util.createRandomUsername();
-            map.put(username, new UserBuilder()
+            map.put(username, User.builder()
                     .username(username)
                     .password("1")
                     .name(util.createRamdomName())
@@ -42,15 +43,15 @@ public class UserServiceImpl implements UserService {
         return users.size() + "";
     }
     @Override
-    public String join(UserDTO userDTO) {
+    public String join(User userDTO) {
         users.put(userDTO.getUsername(), userDTO);
         return "회원가입 성공 - 총 회원수: " + users.size();
     }
 
     @Override
-    public String login(UserDTO user) {
+    public String login(User user) {
         String msg = "";
-        UserDTO userInMap = users.get(user.getUsername());
+        User userInMap = users.get(user.getUsername());
         if (userInMap == null) {
             msg = "아이디 틀림";
         }
@@ -63,11 +64,11 @@ public class UserServiceImpl implements UserService {
         return msg;
     }
     @Override
-    public UserDTO findUserById(String username) {
+    public User findUserById(String username) {
         return users.get(username);
     }
     @Override
-    public String updatePassword(UserDTO userDTO) {
+    public String updatePassword(User userDTO) {
         users.get(userDTO.getUsername()).setPassword(userDTO.getPassword());
         return "비밀번호 변경 성공";
     }
@@ -77,12 +78,12 @@ public class UserServiceImpl implements UserService {
         return "탈퇴 완료";
     }
     @Override
-    public Map<String, UserDTO> getUserMap() {
+    public Map<String, User> getUserMap() {
         return users;
     }
-    public List<UserDTO> findUsersByName(String name) {
-        List<UserDTO> list=new ArrayList<>();
-        for (UserDTO userDTO : users.values()) {
+    public List<User> findUsersByName(String name) {
+        List<User> list=new ArrayList<>();
+        for (User userDTO : users.values()) {
             if (userDTO.getName().equals(name)) {
                 list.add(userDTO);
             }
@@ -91,9 +92,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDTO> findUsersByJob(String job){
-        List<UserDTO> list=new ArrayList<>();
-        for(UserDTO userDTO:users.values()){
+    public List<User> findUsersByJob(String job){
+        List<User> list=new ArrayList<>();
+        for(User userDTO:users.values()){
             if(userDTO.getJob().equals(job))
                 list.add(userDTO);
         }

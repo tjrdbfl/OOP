@@ -1,12 +1,9 @@
 package controller;
 
-import builder.UserBuilder;
-import model.UserDTO;
+import model.User;
 import service.UserService;
-import serviceImpl.AuthServiceImpl;
 import serviceImpl.UserServiceImpl;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -32,7 +29,7 @@ public class UserController { //controller: model과 view를 가지고 있어야
                 "주소, " +
                 "직업을 입력해주세요");
 
-        return userService.join(new UserBuilder()
+        return userService.join(User.builder()
                 .username(sc.next())
                 .password(sc.next())
                 .passwordConfirm(sc.next())
@@ -47,13 +44,13 @@ public class UserController { //controller: model과 view를 가지고 있어야
     public String login(Scanner sc) {
         System.out.println("로그인할 ID, PASSWORD 입력");
 
-        return userService.login(new UserBuilder()
+        return userService.login(User.builder()
                 .username(sc.next())
                 .password(sc.next())
                 .build());
     }
 
-    public UserDTO findUserById(Scanner sc) {
+    public User findUserById(Scanner sc) {
         System.out.println("검색할 ID 입력 :");
         return userService.findUserById(sc.next());
     }
@@ -61,7 +58,7 @@ public class UserController { //controller: model과 view를 가지고 있어야
     public String updatePassword(Scanner sc) {
         System.out.println("수정할 ID 입력: ");
         System.out.println("수정할 비번 입력: ");
-        return userService.updatePassword(new UserBuilder()
+        return userService.updatePassword(User.builder()
                 .username(sc.next())
                 .password(sc.next())
                 .build());
@@ -72,17 +69,17 @@ public class UserController { //controller: model과 view를 가지고 있어야
         return userService.deleteUser(sc.next());
     }
 
-    public Map<String, UserDTO> getUserMap() {
+    public Map<String, User> getUserMap() {
         System.out.println("전체 목록 출력");
         return userService.getUserMap();
     }
 
-    public List<UserDTO> findUsersByName(Scanner sc) {
+    public List<User> findUsersByName(Scanner sc) {
         System.out.print("검색하고 싶은 이름: ");
         return userService.findUsersByName(sc.next());
     }
 
-    public List<UserDTO> findUsersByJob(Scanner sc) {
+    public List<User> findUsersByJob(Scanner sc) {
         System.out.print("검색하고 싶은 직업: ");
         return userService.findUsersByJob(sc.next());
     }

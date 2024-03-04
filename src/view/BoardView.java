@@ -1,7 +1,6 @@
 package view;
 
-import builder.BoardBuilder;
-import model.BoardDTO;
+import model.Board;
 import service.UtilService;
 import serviceImpl.UtilServiceImpl;
 
@@ -10,11 +9,11 @@ import java.util.List;
 
 public class BoardView {
     public static void main() {
-        List<BoardDTO> articles=new ArrayList<BoardDTO>();
+        List<Board> articles=new ArrayList<Board>();
         UtilService util= UtilServiceImpl.getInstance();
 
         for(int i=0;i<5;i++){
-            articles.add(new BoardBuilder()
+            articles.add(Board.builder()
                     .title(util.createRandomTitle())
                     .content(util.createRandomContent())
                     .writer(util.createRamdomName())
@@ -26,7 +25,7 @@ public class BoardView {
             System.out.println(i.toString());
         });
         //고용량에서 유리: articles에서 하나를 뽑아서 처리
-        for(BoardDTO i: articles){
+        for(Board i: articles){
             System.out.println(i.toString());
         }
 //        for(int i=0;i<articles.size();i++){

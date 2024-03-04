@@ -1,9 +1,8 @@
 package view;
 
 import builder.SubjectBuilder;
-import builder.UserBuilder;
 import model.SubjectDTO;
-import model.UserDTO;
+import model.User;
 import service.GradeService;
 import service.UtilService;
 import serviceImpl.GradeServiceImpl;
@@ -22,7 +21,7 @@ public class SubjectView {
         UtilService util = UtilServiceImpl.getInstance();
         GradeService grade = GradeServiceImpl.getInstance();
 
-        UserDTO student = new UserBuilder()
+        User student = User.builder()
                 .name(sc.next())
                 .build();
 

@@ -1,13 +1,9 @@
 package controller;
 
-import builder.AccountBuilder;
-import model.AccountDTO;
+import model.Account;
 import service.AccountService;
-import service.UtilService;
 import serviceImpl.AccountServiceImpl;
-import serviceImpl.UtilServiceImpl;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Date;
@@ -21,7 +17,7 @@ public class AccountController {
     }
     public String createAccount(Scanner sc) {
         System.out.println("계좌 id(숫자로 입력),계좌 번호(숫자로 입력), 계좌 소유자 이름을 입력하세요.");
-        return accountService.createAccount(new AccountBuilder()
+        return accountService.createAccount(Account.builder()
                 .id(sc.nextLong())
                 .accountNumber(sc.next())
                 .accountHolder(sc.next())
@@ -32,14 +28,14 @@ public class AccountController {
 
     public String deposit(Scanner sc) {
         System.out.println("계좌 번호, 입금 금액 입력:");
-        return accountService.deposit(new AccountBuilder()
+        return accountService.deposit(Account.builder()
                 .accountNumber(sc.next())
                 .balance(sc.nextDouble())
                 .build());
     }
     public String withdraw(Scanner sc) {
         System.out.println("계좌번호, 출금 금액 입력: ");
-        return accountService.withdraw(new AccountBuilder()
+        return accountService.withdraw(Account.builder()
                 .accountNumber(sc.next())
                 .balance(sc.nextDouble())
                 .build());
@@ -52,11 +48,11 @@ public class AccountController {
         System.out.println("계좌번호 입력:");
         return accountService.cancelAccount(sc.next());
     }
-    public AccountDTO getAccountList(Scanner sc) {
+    public Account getAccountList(Scanner sc) {
         System.out.println("계좌번호 입력:");
         return accountService.getAccountList(sc.next());
     }
-    public List<AccountDTO> getAccount() {
+    public List<Account> getAccount() {
         return accountService.getAccount();
     }
 }

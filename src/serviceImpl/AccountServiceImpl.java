@@ -1,19 +1,15 @@
 package serviceImpl;
 
-import model.AccountDTO;
+import model.Account;
 import service.AccountService;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.lang.Integer.parseInt;
-
 public class AccountServiceImpl implements AccountService {
     private static AccountService instance= new AccountServiceImpl();
-    List<AccountDTO> list;
-
+    List<Account> list;
     public AccountServiceImpl() {
-        list = new ArrayList<>();
+        list = new ArrayList<Account>();
     }
 
     public static AccountService getInstance() {
@@ -21,11 +17,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public String createAccount(AccountDTO accountDTO) {
-        AccountDTO account = null;
+    public String createAccount(Account accountDTO) {
+        Account account = null;
 
         list.add(accountDTO);
-        for(AccountDTO i:list){
+        for(Account i:list){
             if(i.getAccountNumber().equals(accountDTO.getAccountNumber()))
                 account=i;
         }
@@ -33,10 +29,10 @@ public class AccountServiceImpl implements AccountService {
         return "계좌생성: "+account;
     }
     @Override
-    public String deposit(AccountDTO accountDTO) {
-        AccountDTO account = null;
+    public String deposit(Account accountDTO) {
+        Account account = null;
 
-        for(AccountDTO i:list){
+        for(Account i:list){
             if(i.getAccountNumber().equals(accountDTO.getAccountNumber())){
                 i.setBalance(i.getBalance()+accountDTO.getBalance());
                 account=i;
@@ -45,11 +41,11 @@ public class AccountServiceImpl implements AccountService {
         return "입금된 금액: "+account.getBalance();
     }
     @Override
-    public String withdraw(AccountDTO accountDTO) {
-        AccountDTO account = null;
+    public String withdraw(Account accountDTO) {
+        Account account = null;
         String msg="";
 
-        for(AccountDTO i:list){
+        for(Account i:list){
             if(i.getAccountNumber().equals(accountDTO.getAccountNumber())){
                 double balance=i.getBalance()-accountDTO.getBalance();
                 account=i;
@@ -65,9 +61,9 @@ public class AccountServiceImpl implements AccountService {
     }
     @Override
     public String getBalance(String accountNumber) {
-        AccountDTO account = null;
+        Account account = null;
 
-        for(AccountDTO i:list){
+        for(Account i:list){
             if(i.getAccountNumber().equals(accountNumber))
                 account=i;
         }
@@ -85,10 +81,10 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountDTO getAccountList(String accountNumber) {
-        AccountDTO account = null;
+    public Account getAccountList(String accountNumber) {
+        Account account = null;
 
-        for(AccountDTO i:list){
+        for(Account i:list){
             if(i.getAccountNumber().equals(accountNumber))
                 account=i;
         }
@@ -96,7 +92,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<AccountDTO> getAccount() {
+    public List<Account> getAccount() {
         return list;
     }
 }

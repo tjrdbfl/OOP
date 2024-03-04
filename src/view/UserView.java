@@ -1,10 +1,7 @@
 package view;
 
-import builder.UserBuilder;
 import controller.UserController;
-import model.UserDTO;
-import service.UserService;
-import serviceImpl.UserServiceImpl;
+import model.User;
 
 import java.util.List;
 import java.util.Map;
@@ -52,30 +49,30 @@ public class UserView {
                     System.out.println(userController.deleteUser(sc));
                     break;
                 case "6":
-                    Map<String, UserDTO> users = userController.getUserMap();
+                    Map<String, User> users = userController.getUserMap();
                     users.forEach((k, v) -> {
                         System.out.printf("아이디: %s, 회원정보: %s", k, v);
                     });
                     System.out.println(users.size() + "");
                     break;
                 case "7":
-                    List<UserDTO> listName = userController.findUsersByName(sc);
+                    List<User> listName = userController.findUsersByName(sc);
                     if(listName==null){
                         System.out.println("회원이 존재하지 않습니다.");
                     }
                     else{
-                        for (UserDTO i : listName) {
+                        for (User i : listName) {
                             System.out.println(i.toString());
                         }
                     }
                     break;
                 case "8":
-                    List<UserDTO> listJob = userController.findUsersByJob(sc);
+                    List<User> listJob = userController.findUsersByJob(sc);
                     if(listJob==null){
                         System.out.println("회원이 존재하지 않습니다.");
                     }
                     else{
-                        for (UserDTO i : listJob) {
+                        for (User i : listJob) {
                             System.out.println(i.toString());
                         }
                     }

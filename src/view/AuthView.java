@@ -1,11 +1,7 @@
 package view;
 
-import builder.UserBuilder;
 import controller.AuthController;
-import controller.UserController;
-import model.UserDTO;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class AuthView {
